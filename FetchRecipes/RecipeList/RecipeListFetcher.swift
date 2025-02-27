@@ -8,9 +8,13 @@
 import Foundation
 
 protocol RecipeListFetcher: Sendable {
+    /// Returns a list of recipes
+    /// - Returns: a list of fetched recipes
     func fetchRecipes() async throws -> [Recipe]
 }
 
+/// Recipe list fetcher implementation that loads recipes from remote.
+/// Does not persist recipes in any cache.
 final class RecipeListRemoteFetcher: RecipeListFetcher {
     
     struct RecipesResponse: Codable {
